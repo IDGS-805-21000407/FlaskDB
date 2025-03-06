@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{ url_for('static', filename='img/currucu.png') }}" alt="Imagen de {{ nombre }}">
+
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ nombre }} {{ apellidoP }}</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Correo electrónico: {{ Email }}</p>
+    </div>
+</div>
+
+<div class="mt-4 flex justify-center">
+    <a href="{{ url_for('index') }}" class="flex items-center gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+        Volver
+    </a>
+</div>
+
+{% endblock %}

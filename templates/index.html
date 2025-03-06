@@ -1,63 +1,55 @@
-{%extends "layout.html"%}
-
-{%block content%}
+{% extends "layout.html" %} {% block content %}
 
 <div class="py-32 relative overflow-x-auto sm:rounded-lg">
+  <div class="mb-4">
+    <a href="agregar.html" class="flex items-center gap-2 text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-500 dark:hover:bg-green-600 focus:outline-none dark:focus:ring-green-700">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+      Agregar Nuevo Registro
+    </a>
+  </div>
   <div class="relative overflow-x-auto">
-    <table
-      class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
-    >
-      <thead
-        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-      >
+    <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg">
+      <thead class="text-xs text-gray-900 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-300">
         <tr>
-          <th scope="col" class="px-6 py-3">Product name</th>
-          <th scope="col" class="px-6 py-3">Color</th>
-          <th scope="col" class="px-6 py-3">Category</th>
-          <th scope="col" class="px-6 py-3">Price</th>
+          <th scope="col" class="px-6 py-3">Nombre</th>
+          <th scope="col" class="px-6 py-3">Apellido</th>
+          <th scope="col" class="px-6 py-3">Correo</th>
+          <th scope="col" class="px-6 py-3">Editar</th>
+          <th scope="col" class="px-6 py-3">Detalles</th>
+          <th scope="col" class="px-6 py-3">Eliminar</th>
         </tr>
       </thead>
       <tbody>
-        <tr
-          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
-        >
-          <th
-            scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-          >
-            Apple MacBook Pro 17"
+        {% for alum in alumno %}
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ alum.nombre }}
           </th>
-          <td class="px-6 py-4">Silver</td>
-          <td class="px-6 py-4">Laptop</td>
-          <td class="px-6 py-4">$2999</td>
+          <td class="px-6 py-4">{{ alum.apaterno }}</td>
+          <td class="px-6 py-4">{{ alum.email }}</td>
+          <td class="px-6 py-4">
+            <a href="modificar.html=id={{ alum.id }}" class="flex items-center gap-2 text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 dark:focus:ring-yellow-900">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M11 17h2m-1-10v6m8.86-3.86a4.5 4.5 0 11-6.36-6.36 4.5 4.5 0 016.36 6.36z"></path></svg>
+              Editar
+            </a>
+          </td>
+          <td class="px-6 py-4">
+            <a href="detalles?id={{alum.id}}" class="flex items-center gap-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12h.01M12 15h.01M9 12h.01M12 7h.01M19 12a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              Detalles
+            </a>
+          </td>
+          <td class="px-6 py-4">
+            <a href="/alumno/{{ alum.id }}" class="flex items-center gap-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+              Eliminar
+            </a>
+          </td>
         </tr>
-        <tr
-          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
-        >
-          <th
-            scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-          >
-            Microsoft Surface Pro
-          </th>
-          <td class="px-6 py-4">White</td>
-          <td class="px-6 py-4">Laptop PC</td>
-          <td class="px-6 py-4">$1999</td>
-        </tr>
-        <tr class="bg-white dark:bg-gray-800">
-          <th
-            scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-          >
-            Magic Mouse 2
-          </th>
-          <td class="px-6 py-4">Black</td>
-          <td class="px-6 py-4">Accessories</td>
-          <td class="px-6 py-4">$99</td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
 </div>
 
-{%endblock%}
+{% endblock %}
