@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+{% import "_macros.html" as macros %}
+
+<div class="py-32 relative overflow-x-auto sm:rounded-lg">
+    <form action="" method="post" novalidate class="max-w-md mx-auto">
+        {{ form.csrf_token }}
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="id" value="{{ form.id.data }}" />
+
+        <h2 class="text-2xl font-semibold text-gray-900 mb-6">Eliminar Alumno</h2>
+        
+        <p class="text-sm text-gray-500 mb-4">¿Estás seguro de que deseas eliminar al alumno?</p>
+
+        <div class="relative z-0 w-full mb-5 group">
+            <label for="nombre" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">{{ form.nombre.data }}</label>
+        </div>
+        
+        <div class="relative z-0 w-full mb-5 group">
+            <label for="apaterno" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">{{ form.apaterno.data }}</label>
+        </div>
+        
+        <div class="relative z-0 w-full mb-5 group">
+            <label for="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">{{ form.email.data }}</label>
+        </div>
+        
+        <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Eliminar</button>
+        <button type="button" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-400 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ml-2" onclick="window.location.href='/'">Cancelar</button>
+    </form>
+</div>
+
+{% endblock %}
